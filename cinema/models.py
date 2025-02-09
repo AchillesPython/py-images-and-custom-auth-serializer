@@ -108,7 +108,7 @@ class Ticket(models.Model):
             if not (1 <= ticket_attr_value <= count_attrs):
                 raise error_to_raise(
                     {
-                        ticket_attr_name:(
+                        ticket_attr_name: (
                             f"{ticket_attr_name} "
                             f"number must be in available range:"
                             f"(1, {cinema_hall_attr_name}): "
@@ -136,7 +136,6 @@ class Ticket(models.Model):
         return super(Ticket, self).save(
             force_insert, force_update, using, update_fields
         )
-
 
     class Meta:
         unique_together = ("movie_session", "row", "seat")
