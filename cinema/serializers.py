@@ -80,6 +80,7 @@ class MovieDetailSerializer(MovieSerializer):
             "image",
         )
 
+
 class MovieSessionSerializer(serializers.ModelSerializer):
     class Meta:
         model = MovieSession

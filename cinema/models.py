@@ -38,6 +38,7 @@ class Actor(models.Model):
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
 
+
 def create_custom_path(movie: "Movie", filename: str):
     filename = (
         f"{slugify(movie.title)}-{uuid.uuid4()}"
@@ -80,9 +81,6 @@ class Order(models.Model):
         on_delete=models.CASCADE
     )
 
-    def __str__(self):
-        return str(self.created_at)
-
     class Meta:
         ordering = ["-created_at"]
 
@@ -111,10 +109,10 @@ class Ticket(models.Model):
                 raise error_to_raise(
                     {
                         ticket_attr_name:(
-                        f"{ticket_attr_name} "
-                        f"number must be in available range: "
-                        f"(1, {cinema_hall_attr_name}): "
-                        f"(1, {count_attrs})"
+                            f"{ticket_attr_name} "
+                            f"number must be in available range:"
+                            f"(1, {cinema_hall_attr_name}): "
+                            f"(1, {count_attrs})"
                         )
                     }
                 )
@@ -139,10 +137,6 @@ class Ticket(models.Model):
             force_insert, force_update, using, update_fields
         )
 
-    def __str__(self):
-        return (
-            f"{str(self.movie_session)} (row: {self.row}, seat: {self.seat})"
-        )
 
     class Meta:
         unique_together = ("movie_session", "row", "seat")
